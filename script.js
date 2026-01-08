@@ -160,3 +160,52 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.service-card, .gallery-item, .contact-card').forEach(el => {
     observer.observe(el);
 });
+
+/* Enhanced Form Messages */
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    display: none;
+    font-weight: 500;
+    animation: slideDown 0.3s ease;
+}
+
+.form-message i {
+    margin-right: 0.5rem;
+}
+
+.form-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+
+.form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+.btn-loader {
+    display: none;
+}
+
+/* Hidden honeypot field */
+.hidden {
+    display: none !important;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
