@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClanFit Admin Panel</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container" id="adminContainer">
+        <!-- Login Screen -->
+        <div class="login-wrapper" id="loginWrapper">
+            <div class="login-box">
+                <div class="login-header">
+                    <h1><span class="clan">CLAN</span><span class="fit">FIT</span></h1>
+                    <p>Admin Control Panel</p>
+                </div>
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                        </label>
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                        </label>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-login">Login</button>
+                    <div id="loginError" class="error-message"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel" id="adminPanel" style="display: none;">
+            <div class="admin-header">
+                <h1><span class="clan">CLAN</span><span class="fit">FIT</span> Admin</h1>
+                <button class="btn-logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+
+            <div class="admin-content">
+                <!-- Tab Navigation -->
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="social">
+                        <i class="fas fa-share-alt"></i> Social Media
+                    </button>
+                    <button class="tab-btn" data-tab="acting">
+                        <i class="fas fa-film"></i> Acting Portfolio
+                    </button>
+                    <button class="tab-btn" data-tab="manage">
+                        <i class="fas fa-list"></i> Manage Posts
+                    </button>
+                </div>
+
+                <!-- Social Media Tab -->
+                <div class="tab-content active" id="socialTab">
+                    <div class="content-box">
+                        <h2>Add Social Media Post</h2>
+                        <p class="instruction">Paste the embed code from YouTube, Instagram, or Facebook</p>
+                        
+                        <form id="socialForm" class="post-form">
+                            <div class="form-group">
+                                <label>Platform</label>
+                                <select id="socialPlatform" required>
+                                    <option value="">Select Platform</option>
+                                    <option value="youtube">YouTube</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="facebook">Facebook</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Post/Video URL or Embed Code</label>
+                                <textarea id="socialEmbed" rows="6" placeholder="Paste YouTube URL, Instagram post URL, or Facebook embed code..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Description (Optional)</label>
+                                <input type="text" id="socialDescription" placeholder="Brief description of the post">
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-plus"></i> Add to Gallery
+                            </button>
+                        </form>
+                        
+                        <div class="embed-guide">
+                            <h3>How to get embed codes:</h3>
+                            <ul>
+                                <li><strong>YouTube:</strong> Just paste the video URL (e.g., https://www.youtube.com/watch?v=...)</li>
+                                <li><strong>Instagram:</strong> Click "..." on post → "Embed" → Copy code</li>
+                                <li><strong>Facebook:</strong> Click "..." on post → "Embed" → Copy code</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acting Portfolio Tab -->
+                <div class="tab-content" id="actingTab">
+                    <div class="content-box">
+                        <h2>Add Acting Content</h2>
+                        <p class="instruction">Add videos showcasing your acting work</p>
+                        
+                        <form id="actingForm" class="post-form">
+                            <div class="form-group">
+                                <label>Platform</label>
+                                <select id="actingPlatform" required>
+                                    <option value="">Select Platform</option>
+                                    <option value="youtube">YouTube</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="facebook">Facebook</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Video URL or Embed Code</label>
+                                <textarea id="actingEmbed" rows="6" placeholder="Paste video URL or embed code..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" id="actingTitle" placeholder="Title of the performance" required>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-plus"></i> Add to Portfolio
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Manage Posts Tab -->
+                <div class="tab-content" id="manageTab">
+                    <div class="content-box">
+                        <h2>Manage Posts</h2>
+                        
+                        <div class="manage-section">
+                            <h3>Social Media Posts</h3>
+                            <div id="socialPostsList" class="posts-list">
+                                <p class="empty-message">No posts yet. Add some from the Social Media tab!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="manage-section">
+                            <h3>Acting Portfolio</h3>
+                            <div id="actingPostsList" class="posts-list">
+                                <p class="empty-message">No videos yet. Add some from the Acting Portfolio tab!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
