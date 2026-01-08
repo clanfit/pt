@@ -728,3 +728,21 @@ section {
         font-size: 2rem;
     }
 }
+
+/* Footer credit link */
+.footer-bottom p {
+    margin: 0.5rem 0;
+}
+
+.footer-bottom a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.footer-bottom a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
