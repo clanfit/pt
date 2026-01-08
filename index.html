@@ -227,71 +227,86 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Start your fitness journey today</p>
+
+   <!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Start your fitness journey today</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p><a href="tel:8050727935">8050727935</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:clanfitpt@gmail.com">clanfitpt@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Available for home visits and online training</p>
+                </div>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <i class="fas fa-phone"></i>
-                        <h3>Phone</h3>
-                        <p><a href="tel:8050727935">8050727935</a></p>
-                    </div>
-                    <div class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p><a href="mailto:clanfitpt@gmail.com">clanfitpt@gmail.com</a></p>
-                    </div>
-                    <div class="contact-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>Available for home visits and online training</p>
-                    </div>
-                </div>
-                <div class="contact-form-wrapper">
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
+            <div class="contact-form-wrapper">
+                <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="e1d5f57f-a1bb-4d26-b938-545849f2d012">
+                    <input type="hidden" name="subject" value="New ClanFit Inquiry from Website">
+                    <input type="hidden" name="from_name" value="ClanFit Website">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" name="phone" required>
                         </div>
-                        <div class="form-group">
-                            <label for="service">Service Type *</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="one-on-one">One-on-One Training</option>
-                                <option value="group">Group Training</option>
-                                <option value="home">Home Training</option>
-                                <option value="online">Online Coaching</option>
-                                <option value="nutrition">Nutrition Planning</option>
-                                <option value="wellness">Wellness Coaching</option>
-                                <option value="demo">Free Demo Session</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                    <div id="formMessage" class="form-message"></div>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Type *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="one-on-one">One-on-One Training</option>
+                            <option value="group">Group Training</option>
+                            <option value="home">Home Training</option>
+                            <option value="online">Online Coaching</option>
+                            <option value="nutrition">Nutrition Planning</option>
+                            <option value="wellness">Wellness Coaching</option>
+                            <option value="demo">Free Demo Session</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <!-- Honeypot Spam Protection -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loader" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Sending...
+                        </span>
+                    </button>
+                </form>
+                <div id="formMessage" class="form-message"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer class="footer">
