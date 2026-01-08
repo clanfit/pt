@@ -49,34 +49,64 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Contact Form Handler
+// Contact Form Handler with Web3Forms
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
+const submitBtn = document.getElementById('submitBtn');
+const btnText = submitBtn.querySelector('.btn-text');
+const btnLoader = submitBtn.querySelector('.btn-loader');
 
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Get form data
+    // Show loading state
+    btnText.style.display = 'none';
+    btnLoader.style.display = 'inline-block';
+    submitBtn.disabled = true;
+    
+    // Prepare form data
     const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
     
-    // Create mailto link with form data
-    const subject = `ClanFit Inquiry - ${data.service}`;
-    const body = `Name: ${data.name}%0D%0APhone: ${data.phone}%0D%0AEmail: ${data.email}%0D%0AService: ${data.service}%0D%0A%0D%0AMessage:%0D%0A${data.message}`;
-    
-    window.location.href = `mailto:clanfitpt@gmail.com?subject=${subject}&body=${body}`;
-    
-    // Show success message
-    formMessage.className = 'form-message success';
-    formMessage.textContent = 'Thank you! Your message has been prepared. Please send the email from your email client.';
-    
-    // Reset form
-    contactForm.reset();
-    
-    setTimeout(() => {
-        formMessage.style.display = 'none';
-    }, 5000);
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Success message
+            formMessage.className = 'form-message success';
+            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We will get back to you soon.';
+            formMessage.style.display = 'block';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        } else {
+            // Error message
+            formMessage.className = 'form-message error';
+            formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or contact us directly.';
+            formMessage.style.display = 'block';
+        }
+    } catch (error) {
+        // Network error
+        formMessage.className = 'form-message error';
+        formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please check your connection and try again.';
+        formMessage.style.display = 'block';
+    } finally {
+        // Reset button state
+        btnText.style.display = 'inline-block';
+        btnLoader.style.display = 'none';
+        submitBtn.disabled = false;
+    }
 });
+
 
 // Load Social Media Content from LocalStorage
 function loadSocialContent() {
