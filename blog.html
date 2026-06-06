@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClanFit Blog — Fitness Tips, Nutrition & Training Guides by Sridhar</title>
+    <meta name="description" content="Expert fitness tips, nutrition advice, strength training guides and wellness inspiration from ClanFit's personal trainer Sridhar. Updated weekly.">
+    <meta property="og:title" content="ClanFit Blog — Fitness Tips by Sridhar">
+    <meta property="og:url" content="https://clanfit.in/blog.html">
+    <link rel="icon" type="image/png" href="clanfitlogo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation (same as main site) -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html" id="blog-nav-logo-link">
+                    <img src="clanfitlogo.png" alt="ClanFit Personal Training Logo" class="logo-img" id="blog-nav-logo">
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link" id="blog-nav-home">Home</a></li>
+                <li><a href="index.html#services" class="nav-link" id="blog-nav-services">Services</a></li>
+                <li><a href="index.html#about" class="nav-link" id="blog-nav-about">About</a></li>
+                <li><a href="index.html#gallery" class="nav-link" id="blog-nav-gallery">Gallery</a></li>
+                <li><a href="index.html#sridhar" class="nav-link" id="blog-nav-sridhar">Sridhar</a></li>
+                <li><a href="blog.html" class="nav-link active" id="blog-nav-blog">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link btn-nav" id="blog-nav-contact">Book Demo</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero" id="blog-top">
+        <div class="blog-hero-bg"></div>
+        <div class="blog-hero-overlay"></div>
+        <div class="container blog-hero-content">
+            <span class="section-tag">Knowledge Hub</span>
+            <h1>ClanFit <span class="highlight">Blog</span></h1>
+            <p>Expert fitness tips, nutrition science, training guides and wellness insights — straight from Sridhar's training floor to you.</p>
+            <div class="blog-search-bar" id="blog-search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="blogSearch" placeholder="Search articles..." aria-label="Search blog posts">
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <div class="blog-categories-bar" id="blog-categories-bar">
+        <div class="container">
+            <div class="blog-categories" id="blogCategories">
+                <button class="blog-cat-btn active" data-category="all" id="cat-all">All Posts</button>
+                <button class="blog-cat-btn" data-category="fitness" id="cat-fitness">
+                    <i class="fas fa-dumbbell"></i> Fitness
+                </button>
+                <button class="blog-cat-btn" data-category="nutrition" id="cat-nutrition">
+                    <i class="fas fa-apple-alt"></i> Nutrition
+                </button>
+                <button class="blog-cat-btn" data-category="lifestyle" id="cat-lifestyle">
+                    <i class="fas fa-sun"></i> Lifestyle
+                </button>
+                <button class="blog-cat-btn" data-category="training" id="cat-training">
+                    <i class="fas fa-fire"></i> Training Tips
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <section class="blog-main">
+        <div class="container">
+            <div class="blog-layout">
+
+                <!-- Main Posts -->
+                <main class="blog-posts-area">
+                    <div class="blog-posts-header">
+                        <h2 id="blogPostsCount">Loading posts...</h2>
+                        <div class="blog-sort">
+                            <select id="blogSort" aria-label="Sort posts">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="blog-posts-grid" id="blogPostsGrid">
+                        <!-- Loaded dynamically -->
+                        <div class="blog-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Fetching latest posts from ClanFit Blog...</p>
+                        </div>
+                    </div>
+                    <div class="blog-pagination" id="blogPagination"></div>
+                </main>
+
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- About the Author -->
+                    <div class="sidebar-widget" id="sidebar-author">
+                        <h3 class="sidebar-title"><i class="fas fa-user"></i> About Sridhar</h3>
+                        <div class="sidebar-author">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=200" alt="Sridhar - Personal Trainer" class="sidebar-author-img">
+                            <div>
+                                <h4>Sridhar</h4>
+                                <p>Certified Personal Trainer & Fitness Coach at ClanFit</p>
+                                <div class="sidebar-social">
+                                    <a href="https://clanfitpt.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Blogger"><i class="fab fa-blogger"></i></a>
+                                    <a href="mailto:clanfitpt@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Posts -->
+                    <div class="sidebar-widget" id="sidebar-featured">
+                        <h3 class="sidebar-title"><i class="fas fa-star"></i> Featured Posts</h3>
+                        <div id="featuredPosts">
+                            <div class="sidebar-loading"><i class="fas fa-spinner fa-spin"></i></div>
+                        </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="sidebar-widget" id="sidebar-tags">
+                        <h3 class="sidebar-title"><i class="fas fa-tags"></i> Tags</h3>
+                        <div class="sidebar-tags">
+                            <span class="tag-pill" id="tag-fitness">Fitness</span>
+                            <span class="tag-pill" id="tag-nutrition">Nutrition</span>
+                            <span class="tag-pill" id="tag-muscle">Muscle Building</span>
+                            <span class="tag-pill" id="tag-weightloss">Weight Loss</span>
+                            <span class="tag-pill" id="tag-cardio">Cardio</span>
+                            <span class="tag-pill" id="tag-strength">Strength</span>
+                            <span class="tag-pill" id="tag-recovery">Recovery</span>
+                            <span class="tag-pill" id="tag-yoga">Flexibility</span>
+                            <span class="tag-pill" id="tag-supplements">Supplements</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="sidebar-widget sidebar-cta" id="sidebar-cta">
+                        <img src="clanfitlogo.png" alt="ClanFit" class="sidebar-logo">
+                        <h3>Ready to Transform?</h3>
+                        <p>Book a free demo session with Sridhar today.</p>
+                        <a href="index.html#contact" class="btn btn-primary" id="sidebar-book-btn">
+                            <i class="fas fa-calendar-check"></i> Book Free Demo
+                        </a>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as main site) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <img src="clanfitlogo.png" alt="ClanFit Logo" class="footer-logo" id="blog-footer-logo">
+                    <p>Transform your body, transform your life with elite personal training by Sridhar.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/918050727935" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:8050727935">8050727935</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:clanfitpt@gmail.com">clanfitpt@gmail.com</a></li>
+                        <li><i class="fab fa-blogger"></i> <a href="https://clanfitpt.blogspot.com" target="_blank">clanfitpt.blogspot.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Blog Topics</h4>
+                    <ul>
+                        <li><a href="#">Fitness Tips</a></li>
+                        <li><a href="#">Nutrition</a></li>
+                        <li><a href="#">Strength Training</a></li>
+                        <li><a href="#">Weight Loss</a></li>
+                        <li><a href="#">Recovery</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ClanFit Personal Training. All rights reserved. | Designed by <a href="https://thosho.github.io/" target="_blank" rel="noopener noreferrer">THOSHO TECH</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="blog.js"></script>
+</body>
+</html>
