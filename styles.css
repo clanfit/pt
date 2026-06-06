@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .logo-img {
-    height: 52px;
+    height: 60px;
     width: auto;
     transition: var(--transition);
     filter: drop-shadow(0 0 12px rgba(232,50,58,0.3));
@@ -122,6 +122,15 @@ h1, h2, h3, h4, h5 {
 .logo-img:hover {
     transform: scale(1.05);
     filter: drop-shadow(0 0 20px rgba(232,50,58,0.5));
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
 }
 
 .nav-menu {
@@ -1382,6 +1391,8 @@ section {
     section { padding: 72px 0; }
 
     .navbar { padding: 10px 0; }
+    .logo-img { height: 45px; }
+    .logo-text { font-size: 1.4rem; }
 
     .nav-menu {
         position: fixed;
