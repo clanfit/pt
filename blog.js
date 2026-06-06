@@ -101,7 +101,7 @@ function parseEntry(entry) {
     const tags = entry.category?.map(c => c.term) || [];
     const category = detectCategory(tags, title);
 
-    return { title, link, excerpt, thumbnail, published, tags, category, entry };
+    return { title, link, excerpt, rawContent, thumbnail, published, tags, category, entry };
 }
 
 function detectCategory(tags, title) {
@@ -144,7 +144,7 @@ function renderPosts() {
 
         return `
             <a href="${post.link}" target="_blank" rel="noopener noreferrer"
-               class="blog-post-card reveal" style="animation-delay: ${i * 0.1}s">
+               class="blog-post-card reveal" data-post-index="${start + i}" style="animation-delay: ${i * 0.1}s">
                 ${post.thumbnail
                     ? `<img class="blog-post-thumb" src="${post.thumbnail}" alt="${post.title}" loading="lazy"
                           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -176,6 +176,7 @@ function renderPosts() {
 
     renderPagination();
     revealBlogElements();
+    attachModalEvents();
 }
 
 function renderPagination() {
@@ -222,14 +223,14 @@ function renderFeaturedPosts() {
     const featured = allPosts.slice(0, 4);
     const icons = { fitness: '🏋️', nutrition: '🥗', lifestyle: '🌿', training: '💪' };
 
-    container.innerHTML = featured.map(post => {
+    container.innerHTML = featured.map((post, i) => {
         const dateStr = post.published.toLocaleDateString('en-IN', {
             day: 'numeric', month: 'short'
         });
         const icon = icons[post.category] || '⚡';
 
         return `
-            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="sidebar-post">
+            <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="sidebar-post" data-featured-index="${i}">
                 ${post.thumbnail
                     ? `<img class="sidebar-post-thumb" src="${post.thumbnail}" alt="${post.title}" loading="lazy"
                           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -243,6 +244,8 @@ function renderFeaturedPosts() {
             </a>
         `;
     }).join('');
+    
+    attachFeaturedModalEvents();
 }
 
 /* ============================================
@@ -254,6 +257,7 @@ function getDemoPosts() {
             title: '5 Morning Workout Habits to Kickstart Your Fitness Journey',
             link: 'https://clanfitpt.blogspot.com',
             excerpt: 'Starting your day with the right fitness habits can transform your energy levels, mental clarity, and long-term results. Sridhar shares the 5 morning rituals he recommends to every client who wants to see real, lasting change.',
+            rawContent: '<p>Starting your day with the right fitness habits can transform your energy levels, mental clarity, and long-term results.</p><p>Sridhar shares the 5 morning rituals he recommends to every client who wants to see real, lasting change.</p>',
             thumbnail: null,
             published: new Date('2026-06-01'),
             category: 'fitness',
@@ -263,6 +267,7 @@ function getDemoPosts() {
             title: 'Nutrition Tips for Building Lean Muscle Efficiently',
             link: 'https://clanfitpt.blogspot.com',
             excerpt: 'Building lean muscle isn\'t just about lifting heavy — nutrition plays an equally critical role. In this guide, Sridhar breaks down exactly how to eat to maximize muscle protein synthesis without unnecessary fat gain.',
+            rawContent: '<p>Building lean muscle isn\'t just about lifting heavy — nutrition plays an equally critical role. In this guide, Sridhar breaks down exactly how to eat to maximize muscle protein synthesis without unnecessary fat gain.</p>',
             thumbnail: null,
             published: new Date('2026-06-05'),
             category: 'nutrition',
@@ -272,6 +277,7 @@ function getDemoPosts() {
             title: 'How Personal Training Accelerates Your Results by 3x',
             link: 'https://clanfitpt.blogspot.com',
             excerpt: 'Studies consistently show that people who train with a certified personal trainer achieve results significantly faster than those who go it alone. Here\'s why ClanFit\'s personalized approach makes all the difference.',
+            rawContent: '<p>Studies consistently show that people who train with a certified personal trainer achieve results significantly faster than those who go it alone. Here\'s why ClanFit\'s personalized approach makes all the difference.</p>',
             thumbnail: null,
             published: new Date('2026-06-08'),
             category: 'training',
@@ -281,6 +287,7 @@ function getDemoPosts() {
             title: 'Rest & Recovery: The Secret Weapon of Elite Athletes',
             link: 'https://clanfitpt.blogspot.com',
             excerpt: 'Most people focus entirely on how hard they train, ignoring the single most important factor in athletic performance: recovery. Learn why rest is not laziness — it\'s where your body actually gets stronger.',
+            rawContent: '<p>Most people focus entirely on how hard they train, ignoring the single most important factor in athletic performance: recovery. Learn why rest is not laziness — it\'s where your body actually gets stronger.</p>',
             thumbnail: null,
             published: new Date('2026-06-10'),
             category: 'lifestyle',
@@ -290,6 +297,7 @@ function getDemoPosts() {
             title: 'Beginner\'s Guide to Strength Training with Sridhar',
             link: 'https://clanfitpt.blogspot.com',
             excerpt: 'If you\'ve never touched a barbell or set foot in a gym, this guide is for you. ClanFit\'s Sridhar walks you through the 7 fundamental strength training principles every beginner needs to know before they start.',
+            rawContent: '<p>If you\'ve never touched a barbell or set foot in a gym, this guide is for you. ClanFit\'s Sridhar walks you through the 7 fundamental strength training principles every beginner needs to know before they start.</p>',
             thumbnail: null,
             published: new Date('2026-06-12'),
             category: 'training',
@@ -299,6 +307,7 @@ function getDemoPosts() {
             title: 'The ClanFit Approach to Sustainable Weight Loss',
             link: 'https://clanfitpt.blogspot.com',
             excerpt: 'Crash diets and extreme exercise programs don\'t work long-term. ClanFit\'s philosophy is built on sustainable, science-backed strategies that help you lose fat while keeping your muscle — and your sanity.',
+            rawContent: '<p>Crash diets and extreme exercise programs don\'t work long-term. ClanFit\'s philosophy is built on sustainable, science-backed strategies that help you lose fat while keeping your muscle — and your sanity.</p>',
             thumbnail: null,
             published: new Date('2026-06-15'),
             category: 'fitness',
@@ -380,6 +389,66 @@ function revealBlogElements() {
         if (rect.top < window.innerHeight - 60) {
             setTimeout(() => el.classList.add('visible'), i * 80);
         }
+    });
+}
+
+/* ============================================
+   MODAL LOGIC
+============================================ */
+function openBlogModal(post) {
+    const overlay = document.getElementById('blogModalOverlay');
+    const content = document.getElementById('blogModalContent');
+    const readMoreBtn = document.getElementById('blogModalReadMore');
+
+    content.innerHTML = `
+        <h2 style="margin-top:0; color: #FFFFFF;">${post.title}</h2>
+        <p style="color: #F5A623; margin-bottom: 30px; font-weight: bold;">
+            <i class="fas fa-calendar"></i> ${post.published.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+        </p>
+        <div style="font-size: 1.1rem; line-height: 1.8;">
+            ${post.rawContent}
+        </div>
+    `;
+
+    readMoreBtn.href = post.link;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeBlogModal() {
+    const overlay = document.getElementById('blogModalOverlay');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function attachModalEvents() {
+    document.querySelectorAll('.blog-post-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const index = parseInt(card.getAttribute('data-post-index'), 10);
+            openBlogModal(filteredPosts[index]);
+        });
+    });
+}
+
+function attachFeaturedModalEvents() {
+    document.querySelectorAll('.sidebar-post').forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const index = parseInt(card.getAttribute('data-featured-index'), 10);
+            const featuredPosts = allPosts.slice(0, 4);
+            openBlogModal(featuredPosts[index]);
+        });
+    });
+}
+
+const modalCloseBtn = document.getElementById('blogModalClose');
+const modalOverlay = document.getElementById('blogModalOverlay');
+
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeBlogModal);
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeBlogModal();
     });
 }
 
