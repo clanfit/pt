@@ -1541,3 +1541,12 @@ section {
     .blog-modal-content { padding: 25px; }
     .blog-modal-footer { padding: 15px 25px; text-align: center; }
 }
+
+#blogModalReadMore {
+    background: #F5A623 !important;
+    color: white !important;
+}
+
+#blogModalReadMore:hover {
+    background: #e0961b !important;
+}
