@@ -47,29 +47,40 @@ async function fetchAllPosts() {
     const grid = document.getElementById('blogPostsGrid');
     const countEl = document.getElementById('blogPostsCount');
 
-    try {
-        const response = await fetch(BLOGGER_FEED_URL);
+    // Create a global callback function for JSONP
+    window.handleBloggerResponse = function(data) {
+        try {
+            const entries = data.feed.entry || [];
+            allPosts = entries.map(parseEntry);
+            filteredPosts = [...allPosts];
 
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            countEl.textContent = `${allPosts.length} post${allPosts.length !== 1 ? 's' : ''} found`;
+            renderPosts();
+            renderFeaturedPosts();
+        } catch (err) {
+            console.error('Error parsing Blogger JSONP:', err);
+            loadDemoFallback(countEl);
+        }
+    };
 
-        const data = await response.json();
-        const entries = data.feed.entry || [];
+    // Inject JSONP script to bypass CORS and file:// restrictions
+    const script = document.createElement('script');
+    script.src = 'https://clanfitpt.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=50&callback=handleBloggerResponse';
+    
+    script.onerror = function() {
+        console.warn('Blogger API fetch failed (JSONP), using demo posts');
+        loadDemoFallback(countEl);
+    };
 
-        allPosts = entries.map(parseEntry);
-        filteredPosts = [...allPosts];
+    document.body.appendChild(script);
+}
 
-        countEl.textContent = `${allPosts.length} post${allPosts.length !== 1 ? 's' : ''} found`;
-        renderPosts();
-        renderFeaturedPosts();
-
-    } catch (err) {
-        console.warn('Blogger API fetch failed, using demo posts:', err);
-        allPosts = getDemoPosts();
-        filteredPosts = [...allPosts];
-        countEl.textContent = `${allPosts.length} posts found`;
-        renderPosts();
-        renderFeaturedPosts();
-    }
+function loadDemoFallback(countEl) {
+    allPosts = getDemoPosts();
+    filteredPosts = [...allPosts];
+    if (countEl) countEl.textContent = `${allPosts.length} posts found (Demo Mode)`;
+    renderPosts();
+    renderFeaturedPosts();
 }
 
 function parseEntry(entry) {
