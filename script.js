@@ -165,23 +165,23 @@ if (contactForm) {
 
         try {
             const formData = new FormData(contactForm);
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            });
+            const name = formData.get('name') || 'Someone';
+            const phone = formData.get('phone') || '';
+            const service = formData.get('service') || 'General Inquiry';
+            const message = formData.get('message') || '';
 
-            const data = await response.json();
+            const whatsappMessage = `*New ClanFit Inquiry!*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Service:* ${service}\n\n*Message:*\n${message}`;
+            
+            const whatsappUrl = `https://wa.me/918050727935?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
 
-            if (data.success) {
-                formMessage.className = 'form-message success';
-                formMessage.textContent = '✅ Message sent! Sridhar will get back to you soon.';
-                contactForm.reset();
-            } else {
-                throw new Error(data.message || 'Form submission failed');
-            }
+            formMessage.className = 'form-message success';
+            formMessage.textContent = '✅ Redirecting to WhatsApp...';
+            contactForm.reset();
         } catch (error) {
             formMessage.className = 'form-message error';
-            formMessage.textContent = '❌ Failed to send. Please try calling: 8050727935';
+            formMessage.textContent = '❌ Failed to connect. Please try WhatsApp directly: 8050727935';
         } finally {
             btnText.style.display = 'inline-flex';
             btnLoader.style.display = 'none';

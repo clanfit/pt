@@ -240,12 +240,22 @@ h1, h2, h3, h4, h5 {
     animation: pulse 2s ease-in-out infinite;
 }
 
-.hero-title {
-    font-size: clamp(2.4rem, 6vw, 4.5rem);
+.hero-brand {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
     font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 24px;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    text-transform: uppercase;
     text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.hero-title-tagline {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
 }
 
 .hero-subtitle {
@@ -1396,7 +1406,8 @@ section {
     .btn-nav { text-align: center; }
     .hamburger { display: flex; z-index: 1000; }
 
-    .hero-title { font-size: 2.2rem; }
+    .hero-brand { font-size: 3rem; }
+    .hero-title-tagline { font-size: 1.2rem; }
     .hero-stats { gap: 20px; }
     .hero-stat-divider { display: none; }
 
