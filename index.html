@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClanFit - Personal Training by Sridhar</title>
+    <title>ClanFit - Personal Training by Sridhar | Transform Your Life</title>
+    <meta name="description" content="ClanFit Personal Training by Sridhar — expert fitness coaching, strength training, nutrition planning & online coaching in Bangalore. Book your free demo today.">
+    <meta property="og:title" content="ClanFit - Personal Training by Sridhar">
+    <meta property="og:description" content="Transform your body and life with ClanFit personal training. Expert coaching tailored to your goals.">
+    <meta property="og:image" content="clanfitlogo.png">
+    <meta property="og:url" content="https://clanfit.in">
+    <link rel="icon" type="image/png" href="clanfitlogo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
             <div class="logo">
-                <h1><span class="clan">CLAN</span><span class="fit">FIT</span></h1>
+                <a href="#home" id="nav-logo-link">
+                    <img src="clanfitlogo.png" alt="ClanFit Personal Training Logo" class="logo-img" id="nav-logo">
+                </a>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#acting" class="nav-link">Sridhar</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
+                <li><a href="#services" class="nav-link" id="nav-services">Services</a></li>
+                <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+                <li><a href="#gallery" class="nav-link" id="nav-gallery">Gallery</a></li>
+                <li><a href="#sridhar" class="nav-link" id="nav-sridhar">Sridhar</a></li>
+                <li><a href="blog.html" class="nav-link" id="nav-blog">Blog</a></li>
+                <li><a href="#contact" class="nav-link btn-nav" id="nav-contact">Book Demo</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -32,16 +43,41 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Transform Your Body, Transform Your Life</h1>
-            <p class="hero-subtitle">Professional Personal Training with Sridhar</p>
+        <div class="hero-content" id="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-fire"></i> #1 Personal Trainer in Bangalore
+            </div>
+            <h1 class="hero-title">Transform Your <span class="highlight">Body</span>,<br>Transform Your <span class="highlight">Life</span></h1>
+            <p class="hero-subtitle">Elite personal training with <strong>Sridhar</strong> — science-backed, results-driven fitness programs tailored for you.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-num">5+</span>
+                    <span class="hero-stat-label">Years Experience</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">100+</span>
+                    <span class="hero-stat-label">Happy Clients</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">6</span>
+                    <span class="hero-stat-label">Programs</span>
+                </div>
+            </div>
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Book Free Demo</a>
-                <a href="#services" class="btn btn-secondary">View Services</a>
+                <a href="#contact" class="btn btn-primary" id="hero-book-btn">
+                    <i class="fas fa-calendar-check"></i> Book Free Demo
+                </a>
+                <a href="#services" class="btn btn-ghost" id="hero-services-btn">
+                    View Services <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <div class="scroll-indicator" id="scroll-indicator">
+            <span>Scroll</span>
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
@@ -49,82 +85,89 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Training Services</h2>
-                <p class="section-subtitle">Customized fitness solutions for your goals</p>
+            <div class="section-header reveal">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Our Training <span class="highlight">Services</span></h2>
+                <p class="section-subtitle">Customized fitness solutions engineered for your goals</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal" id="service-personal">
                     <div class="service-icon">
                         <i class="fas fa-dumbbell"></i>
                     </div>
                     <h3>One-on-One Training</h3>
-                    <p>Personalized workout plans tailored to your fitness level and goals</p>
+                    <p>Personalized workout plans tailored to your fitness level and goals with complete individual attention.</p>
                     <ul class="service-features">
-                        <li>Custom meal plans</li>
-                        <li>Progress tracking</li>
-                        <li>Flexible scheduling</li>
+                        <li><i class="fas fa-check"></i> Custom meal plans</li>
+                        <li><i class="fas fa-check"></i> Progress tracking</li>
+                        <li><i class="fas fa-check"></i> Flexible scheduling</li>
                     </ul>
+                    <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal" id="service-group">
                     <div class="service-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Group Training</h3>
-                    <p>Motivating group sessions with like-minded fitness enthusiasts</p>
+                    <p>Motivating group sessions with like-minded fitness enthusiasts for accountability and community.</p>
                     <ul class="service-features">
-                        <li>Max 5-6 people</li>
-                        <li>Cost-effective</li>
-                        <li>Community support</li>
+                        <li><i class="fas fa-check"></i> Max 5-6 people</li>
+                        <li><i class="fas fa-check"></i> Cost-effective</li>
+                        <li><i class="fas fa-check"></i> Community support</li>
                     </ul>
+                    <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal" id="service-home">
                     <div class="service-icon">
                         <i class="fas fa-home"></i>
                     </div>
                     <h3>Home Training</h3>
-                    <p>Professional training in the comfort of your own home</p>
+                    <p>Professional training in the comfort of your own home — no gym required, results guaranteed.</p>
                     <ul class="service-features">
-                        <li>No gym required</li>
-                        <li>Equipment provided</li>
-                        <li>Convenient timing</li>
+                        <li><i class="fas fa-check"></i> No gym required</li>
+                        <li><i class="fas fa-check"></i> Equipment provided</li>
+                        <li><i class="fas fa-check"></i> Convenient timing</li>
                     </ul>
+                    <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal" id="service-online">
                     <div class="service-icon">
                         <i class="fas fa-video"></i>
                     </div>
                     <h3>Online Coaching</h3>
-                    <p>Virtual training sessions with complete guidance and support</p>
+                    <p>Virtual training sessions with complete guidance, workout videos and 24/7 support from anywhere.</p>
                     <ul class="service-features">
-                        <li>Video consultations</li>
-                        <li>24/7 chat support</li>
-                        <li>Workout videos</li>
+                        <li><i class="fas fa-check"></i> Video consultations</li>
+                        <li><i class="fas fa-check"></i> 24/7 chat support</li>
+                        <li><i class="fas fa-check"></i> Workout videos</li>
                     </ul>
+                    <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal" id="service-nutrition">
                     <div class="service-icon">
                         <i class="fas fa-apple-alt"></i>
                     </div>
                     <h3>Nutrition Planning</h3>
-                    <p>Comprehensive diet plans designed for your body type</p>
+                    <p>Comprehensive diet plans designed for your body type, lifestyle and fitness goals.</p>
                     <ul class="service-features">
-                        <li>Macro calculations</li>
-                        <li>Weekly meal prep</li>
-                        <li>Supplement advice</li>
+                        <li><i class="fas fa-check"></i> Macro calculations</li>
+                        <li><i class="fas fa-check"></i> Weekly meal prep</li>
+                        <li><i class="fas fa-check"></i> Supplement advice</li>
                     </ul>
+                    <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal" id="service-wellness">
                     <div class="service-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h3>Wellness Coaching</h3>
-                    <p>Holistic approach to health, fitness, and mental well-being</p>
+                    <p>Holistic approach to health, fitness, and mental well-being for a balanced, energetic life.</p>
                     <ul class="service-features">
-                        <li>Stress management</li>
-                        <li>Lifestyle coaching</li>
-                        <li>Habit formation</li>
+                        <li><i class="fas fa-check"></i> Stress management</li>
+                        <li><i class="fas fa-check"></i> Lifestyle coaching</li>
+                        <li><i class="fas fa-check"></i> Habit formation</li>
                     </ul>
+                    <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -134,24 +177,34 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600" alt="Sridhar - Personal Trainer">
+                <div class="about-image reveal">
+                    <div class="about-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600" alt="Sridhar - ClanFit Personal Trainer">
+                        <div class="about-img-glow"></div>
+                    </div>
                     <div class="about-stats">
-                        <div class="stat">
-                            <h3>5+</h3>
+                        <div class="stat" id="stat-years">
+                            <span class="stat-num" data-target="5">0</span>
+                            <span class="stat-plus">+</span>
                             <p>Years Experience</p>
                         </div>
-                        <div class="stat">
-                            <h3>100+</h3>
+                        <div class="stat" id="stat-clients">
+                            <span class="stat-num" data-target="100">0</span>
+                            <span class="stat-plus">+</span>
                             <p>Happy Clients</p>
+                        </div>
+                        <div class="stat" id="stat-programs">
+                            <span class="stat-num" data-target="6">0</span>
+                            <p>Programs</p>
                         </div>
                     </div>
                 </div>
-                <div class="about-text">
-                    <h2>Meet Sridhar</h2>
-                    <h3>Certified Personal Trainer & Fitness Enthusiast</h3>
-                    <p>With years of experience in fitness training and a passion for helping people achieve their health goals, I've dedicated my life to transforming bodies and minds.</p>
-                    <p>My approach combines scientific training methods with personalized attention to ensure every client reaches their full potential. Whether you're looking to lose weight, build muscle, or improve overall fitness, I'm here to guide you every step of the way.</p>
+                <div class="about-text reveal">
+                    <span class="section-tag">Meet Your Trainer</span>
+                    <h2>Meet <span class="highlight">Sridhar</span></h2>
+                    <h3>Certified Personal Trainer & Fitness Coach</h3>
+                    <p>With years of experience in fitness training and a passion for helping people achieve their health goals, Sridhar has dedicated his life to transforming bodies and minds across Bangalore.</p>
+                    <p>His approach combines scientific training methods with personalized attention to ensure every client reaches their full potential — whether you're looking to lose weight, build muscle, or improve overall fitness.</p>
                     <div class="certifications">
                         <h4>Certifications & Expertise:</h4>
                         <ul>
@@ -161,6 +214,7 @@
                             <li><i class="fas fa-check-circle"></i> Functional Training Expert</li>
                         </ul>
                     </div>
+                    <a href="#contact" class="btn btn-primary" id="about-cta-btn">Train With Sridhar</a>
                 </div>
             </div>
         </div>
@@ -169,157 +223,251 @@
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Training Gallery</h2>
-                <p class="section-subtitle">See our training sessions in action</p>
+            <div class="section-header reveal">
+                <span class="section-tag">In Action</span>
+                <h2 class="section-title">Training <span class="highlight">Gallery</span></h2>
+                <p class="section-subtitle">See real transformations and training sessions</p>
             </div>
             <div class="gallery-grid" id="galleryGrid">
-                <!-- Dynamic content from admin panel will be loaded here -->
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400" alt="Training Session">
+                <div class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600" alt="ClanFit Training Session">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400" alt="Gym Training">
+                <div class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600" alt="Gym Training">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=400" alt="Workout">
+                <div class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=600" alt="Workout Session">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400" alt="Fitness">
+                <div class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600" alt="Fitness Training">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400" alt="Training">
+                <div class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600" alt="Personal Training">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400" alt="Exercise">
-                </div>
-            </div>
-            
-            <!-- Social Media Feed Section -->
-            <div class="social-feeds">
-                <h3>Latest Updates</h3>
-                <div class="feeds-container" id="socialFeedsContainer">
-                    <!-- Dynamic social media embeds will be loaded here -->
+                <div class="gallery-item reveal">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600" alt="Exercise">
+                    <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Acting Portfolio Section -->
-    <section id="acting" class="acting">
+    <!-- Sridhar — Personal Trainer & Actor Section -->
+    <section id="sridhar" class="sridhar-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Acting Portfolio</h2>
-                <p class="section-subtitle">Explore Sridhar's acting journey</p>
+            <div class="section-header reveal">
+                <span class="section-tag">Beyond Fitness</span>
+                <h2 class="section-title">Sridhar — <span class="highlight">Trainer & Actor</span></h2>
+                <p class="section-subtitle">The man behind ClanFit — fitness expert with a passion for the silver screen</p>
             </div>
-            <div class="acting-content">
-                <div class="acting-intro">
-                    <p>Beyond fitness, Sridhar is also a passionate aspiring actor, bringing the same dedication and discipline from training to the world of performing arts.</p>
-                </div>
-                <div class="acting-videos" id="actingVideos">
-                    <!-- Dynamic acting content will be loaded here -->
-                    <div class="video-placeholder">
-                        <i class="fas fa-film"></i>
-                        <p>Acting videos and showreels will appear here</p>
+
+            <!-- Trainer & Actor Bio -->
+            <div class="sridhar-bio reveal">
+                <div class="sridhar-bio-card">
+                    <div class="sridhar-bio-icon">
+                        <i class="fas fa-dumbbell"></i>
                     </div>
+                    <div class="sridhar-bio-text">
+                        <h3>The Fitness Expert</h3>
+                        <p>Sridhar is the founder and head trainer of ClanFit Personal Training. With 5+ years of experience and over 100 clients transformed, he brings an unmatched combination of scientific knowledge, discipline, and motivational energy to every training session. His philosophy: every body is capable of extraordinary transformation with the right guidance.</p>
+                    </div>
+                </div>
+                <div class="sridhar-bio-card">
+                    <div class="sridhar-bio-icon acting-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="sridhar-bio-text">
+                        <h3>The Actor</h3>
+                        <p>Beyond the gym, Sridhar nurtures a deep passion for acting and the performing arts. With the same dedication and discipline that drives his fitness career, he pursues acting with full commitment — channeling raw energy, emotional depth, and physical presence onto the screen. His athletic physique and magnetic personality make him a natural in front of the camera. Sridhar's journey in the entertainment world is just beginning, and he brings the same transformative spirit to every role he pursues.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Shoot Gallery — Placeholder -->
+            <div class="photo-shoot-section reveal">
+                <div class="photo-shoot-header">
+                    <h3><i class="fas fa-camera"></i> Photo Shoot Gallery</h3>
+                    <p class="photo-shoot-subtitle">Professional photo shoot images coming soon — a visual journey of Sridhar's fitness & acting portfolio</p>
+                </div>
+                <div class="photo-shoot-grid" id="sridharPhotoGrid">
+                    <div class="photo-placeholder" id="photo-placeholder-1">
+                        <div class="photo-placeholder-inner">
+                            <i class="fas fa-camera-retro"></i>
+                            <span>Fitness Shoot</span>
+                            <small>Coming Soon</small>
+                        </div>
+                    </div>
+                    <div class="photo-placeholder" id="photo-placeholder-2">
+                        <div class="photo-placeholder-inner">
+                            <i class="fas fa-star"></i>
+                            <span>Acting Portfolio</span>
+                            <small>Coming Soon</small>
+                        </div>
+                    </div>
+                    <div class="photo-placeholder" id="photo-placeholder-3">
+                        <div class="photo-placeholder-inner">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Training Session</span>
+                            <small>Coming Soon</small>
+                        </div>
+                    </div>
+                    <div class="photo-placeholder" id="photo-placeholder-4">
+                        <div class="photo-placeholder-inner">
+                            <i class="fas fa-theater-masks"></i>
+                            <span>Character Study</span>
+                            <small>Coming Soon</small>
+                        </div>
+                    </div>
+                    <div class="photo-placeholder" id="photo-placeholder-5">
+                        <div class="photo-placeholder-inner">
+                            <i class="fas fa-fire"></i>
+                            <span>Action Shots</span>
+                            <small>Coming Soon</small>
+                        </div>
+                    </div>
+                    <div class="photo-placeholder" id="photo-placeholder-6">
+                        <div class="photo-placeholder-inner">
+                            <i class="fas fa-portrait"></i>
+                            <span>Portrait Series</span>
+                            <small>Coming Soon</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-shoot-cta">
+                    <p>📸 Follow Sridhar's journey on social media for the latest photos & updates</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-   <!-- Contact Section -->
-<section id="contact" class="contact">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Start your fitness journey today</p>
-        </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <i class="fas fa-phone"></i>
-                    <h3>Phone</h3>
-                    <p><a href="tel:8050727935">8050727935</a></p>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p><a href="mailto:clanfitpt@gmail.com">clanfitpt@gmail.com</a></p>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Location</h3>
-                    <p>Available for home visits and online training</p>
+    <!-- Blog Preview Section -->
+    <section id="blog-preview" class="blog-preview">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Fitness Tips</span>
+                <h2 class="section-title">From the <span class="highlight">Blog</span></h2>
+                <p class="section-subtitle">Expert fitness tips, nutrition advice and training guides from Sridhar</p>
+            </div>
+            <div class="blog-grid" id="blogPreviewGrid">
+                <div class="blog-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading latest posts...</p>
                 </div>
             </div>
-            <div class="contact-form-wrapper">
-                <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="e1d5f57f-a1bb-4d26-b938-545849f2d012">
-                    <input type="hidden" name="subject" value="New ClanFit Inquiry from Website">
-                    <input type="hidden" name="from_name" value="ClanFit Website">
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Type *</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service</option>
-                            <option value="one-on-one">One-on-One Training</option>
-                            <option value="group">Group Training</option>
-                            <option value="home">Home Training</option>
-                            <option value="online">Online Coaching</option>
-                            <option value="nutrition">Nutrition Planning</option>
-                            <option value="wellness">Wellness Coaching</option>
-                            <option value="demo">Free Demo Session</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    
-                    <!-- Honeypot Spam Protection -->
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    
-                    <button type="submit" class="btn btn-primary" id="submitBtn">
-                        <span class="btn-text">Send Message</span>
-                        <span class="btn-loader" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Sending...
-                        </span>
-                    </button>
-                </form>
-                <div id="formMessage" class="form-message"></div>
+            <div class="blog-cta reveal">
+                <a href="blog.html" class="btn btn-outline" id="view-all-posts-btn">
+                    View All Posts <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Start Today</span>
+                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+                <p class="section-subtitle">Book your free demo session and begin your transformation</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info reveal">
+                    <div class="contact-card" id="contact-phone">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h3>Phone / WhatsApp</h3>
+                            <p><a href="tel:8050727935">8050727935</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card" id="contact-email">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><a href="mailto:clanfitpt@gmail.com">clanfitpt@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card" id="contact-location">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Bangalore — Home visits & Online training available</p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="Facebook" id="social-facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" target="_blank" aria-label="Instagram" id="social-instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank" aria-label="YouTube" id="social-youtube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://wa.me/918050727935" target="_blank" aria-label="WhatsApp" id="social-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper reveal">
+                    <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="e1d5f57f-a1bb-4d26-b938-545849f2d012">
+                        <input type="hidden" name="subject" value="New ClanFit Inquiry from Website">
+                        <input type="hidden" name="from_name" value="ClanFit Website">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Type *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="one-on-one">One-on-One Training</option>
+                                <option value="group">Group Training</option>
+                                <option value="home">Home Training</option>
+                                <option value="online">Online Coaching</option>
+                                <option value="nutrition">Nutrition Planning</option>
+                                <option value="wellness">Wellness Coaching</option>
+                                <option value="demo">Free Demo Session</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your fitness goals..." required></textarea>
+                        </div>
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                            <span class="btn-text"><i class="fas fa-paper-plane"></i> Send Message</span>
+                            <span class="btn-loader" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+                        </button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3><span class="clan">CLAN</span><span class="fit">FIT</span></h3>
-                    <p>Transform your body, transform your life with professional personal training.</p>
+                <div class="footer-section footer-brand">
+                    <img src="clanfitlogo.png" alt="ClanFit Logo" class="footer-logo" id="footer-logo">
+                    <p>Transform your body, transform your life with elite personal training by Sridhar.</p>
                     <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/918050727935" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -328,22 +476,44 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#sridhar">Sridhar</a></li>
+                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
+                    <h4>Services</h4>
                     <ul>
-                        <li><i class="fas fa-phone"></i> 8050727935</li>
-                        <li><i class="fas fa-envelope"></i> clanfitpt@gmail.com</li>
+                        <li><a href="#services">One-on-One Training</a></li>
+                        <li><a href="#services">Group Training</a></li>
+                        <li><a href="#services">Home Training</a></li>
+                        <li><a href="#services">Online Coaching</a></li>
+                        <li><a href="#services">Nutrition Planning</a></li>
+                        <li><a href="#services">Wellness Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> <a href="tel:8050727935">8050727935</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:clanfitpt@gmail.com">clanfitpt@gmail.com</a></li>
+                        <li><i class="fas fa-globe"></i> clanfit.in</li>
+                        <li><i class="fab fa-blogger"></i> <a href="https://clanfitpt.blogspot.com" target="_blank">Blog</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 ClanFit. All rights reserved. | Website Designed & Maintained by <a href="https://thosho.github.io/" target="_blank" rel="noopener noreferrer">THOSHO TECH</a></p>
+                <p>&copy; 2026 ClanFit Personal Training. All rights reserved. | Designed by <a href="https://thosho.github.io/" target="_blank" rel="noopener noreferrer">THOSHO TECH</a></p>
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+        <img src="" alt="Gallery Image" id="lightboxImg">
+    </div>
 
     <script src="script.js"></script>
 </body>
